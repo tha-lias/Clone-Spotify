@@ -8,6 +8,7 @@ export const useSongStore = defineStore('song', {
         currentTrack: null
     }),
 
+    //
     actions: {
         loadSong(artist, track) {
             this.currentArtist = artist;
