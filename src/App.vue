@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { RouterLink, RouterView } from "vue-router";
-import Menu from './components/MenuItem.vue'
+import MenuList from "./components/MenuItem.vue";
 
 import ChevronUp from "vue-material-design-icons/ChevronUp.vue";
 import ChevronDown from "vue-material-design-icons/ChevronDown.vue";
@@ -82,14 +82,79 @@ let openMenu = ref(false);
 
       <div class="my-8"></div>
       <ul>
-        <a href="/">
-          <Menu class="ml-[1px]" :iconSize="23" name="Home" iconString="home" pageUrl="/" />
-        </a>
+        <RouterLink to="/">
+          <MenuList
+            class="ml-[1px]"
+            :iconSize="23"
+            name="Home"
+            iconString="home"
+            pageUrl="/"
+          />
+        </RouterLink>
+        <RouterLink to="/search">
+          <MenuList
+            class="ml-[1px]"
+            :iconSize="24"
+            name="Search"
+            iconString="search"
+            pageUrl="/search"
+          />
+        </RouterLink>
+        <RouterLink to="/library">
+          <MenuList
+            class="ml-[2px]"
+            :iconSize="23"
+            name="Library"
+            iconString="library"
+            pageUrl="/library"
+          />
+        </RouterLink>
+        <div class="py-3.5"></div>
+        <MenuList
+          :iconSize="24"
+          name="Create Playlist"
+          iconString="playlist"
+          pageUrl="/playlist"
+        />
+        <MenuList
+          class="-ml-[1px]"
+          :iconSize="27"
+          name="Liked Songs"
+          iconString="liked"
+          pageUrl="/liked"
+        />
+      </ul>
 
-        <a href="/" >
-          <Menu class="ml-[1px]" :iconSize="23" name="Search" iconString="search" pageUrl="/search" />
-        </a>
+      <div class="border-b border-b-gray-700"></div>
+
+      <ul>
+        <li
+          class="font-semibold text-[13px] mt-3 text-gray-300 hover:text-white"
+        >
+          My Playlist #1
+        </li>
+        <li
+          class="font-semibold text-[13px] mt-3 text-gray-300 hover:text-white"
+        >
+          My Playlist #2
+        </li>
+        <li
+          class="font-semibold text-[13px] mt-3 text-gray-300 hover:text-white"
+        >
+          My Playlist #3
+        </li>
+        <li
+          class="font-semibold text-[13px] mt-3 text-gray-300 hover:text-white"
+        >
+          My Playlist #4
+        </li>
       </ul>
     </div>
+  </div>
+
+  <div class="fixed right-0 top-0 w-[calc(100%-240px)] overflow-auto h-full bg-gradient-to-b from-[#1C1C1C] to-black">
+    <div class="mt-[70px]"></div>
+    <RouterView/>
+    <div class="mb-[100px]"></div>
   </div>
 </template>
