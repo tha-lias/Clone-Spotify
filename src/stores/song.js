@@ -23,8 +23,4 @@ export const useSongStore = defineStore('song', {
             this.audio.src = track.path
         }
     }
-
-
-
-    
 })
