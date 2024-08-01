@@ -16,8 +16,7 @@ let icon = ref(null)
 let textIsHover = ref(false)
 
 watchEffect(() => {
-    console.log(route);
-    if (route == pageUrl.value) {
+    if (route.path == pageUrl.value) {
         icon.value = iconString.value + '-active'
         textIsHover.value = true
     } else {
@@ -50,7 +49,7 @@ const isHover = () => {
             :class="textIsHover ? 'text-white ' : 'text-gray-400'"
             class="font-semibold text-[14px] ml-4 mt-0.5"
         >
-            <span :class="route == pageUrl ? 'text-white' : ''">{{ name }}</span>
+            <span :class="route.path == pageUrl ? 'text-white' : ''">{{ name }}</span>
         </div>
     </li>
 </template>
