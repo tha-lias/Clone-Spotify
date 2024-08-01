@@ -62,7 +62,7 @@ Para iniciar o servidor de desenvolvimento, execute:
 ```bash
 npm run dev
 ```
-Isso abrirá o projeto no seu navegador padrão. Se não abrir automaticamente, basta acessar http://localhost:5173.
+Isso abrirá o projeto no seu navegador padrão. Se não abrir automaticamente, basta acessar http://localhost:3000.
 
 ##
 
