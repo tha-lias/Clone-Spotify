@@ -1,9 +1,8 @@
 <script setup>
 import { ref, toRefs, onMounted } from "vue";
-
+import Heart from "vue-material-design-icons/Heart.vue";
 import Play from "vue-material-design-icons/Play.vue";
 import Pause from "vue-material-design-icons/Pause.vue";
-import Heart from "vue-material-design-icons/Heart.vue";
 
 import { useSongStore } from "../stores/song";
 import { storeToRefs } from "pinia";
@@ -11,7 +10,7 @@ const useSong = useSongStore();
 const { isPlaying, currentTrack } = storeToRefs(useSong);
 
 let isHover = ref(false);
-let isTrackTime = ref(false);
+let isTrackTime = ref(null);
 
 const props = defineProps({
   track: Object,
@@ -52,6 +51,7 @@ onMounted(() => {
           :size="25"
           @click="useSong.loadSong(artist, track)"
         />
+
         <Pause
           v-else
           fillColor="#FFFFFF"
@@ -65,28 +65,27 @@ onMounted(() => {
             'text-green-500': currentTrack && currentTrack.name === track.name,
           }"
         >
-          {{ index }}</span
-        >
+          {{ index }}
+        </span>
       </div>
       <div>
         <div
-          class="text-white font-semibold"
           :class="{
             'text-green-500': currentTrack && currentTrack.name === track.name,
+            'text-white': !(currentTrack && currentTrack.name === track.name),
           }"
+          class="font-semibold"
         >
           {{ track.name }}
         </div>
         <div class="text-sm font-semibold text-gray-400">{{ artist.name }}</div>
       </div>
     </div>
-
     <div class="flex items-center">
       <button type="button" v-if="isHover">
         <Heart fillColor="#1BD760" :size="22" />
       </button>
-
-      <div v-if="isTrackTime" class="text-xs text-gray-400">
+      <div v-if="isTrackTime" class="text-xs mx-5 text-gray-400">
         {{ isTrackTime }}
       </div>
     </div>
